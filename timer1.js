@@ -6,15 +6,15 @@ let inputs = process.argv.slice(2);
 
 if (inputs === []) { // if empty, return immediately
   return;
-};
+}
 
 inputs = inputs.map(x => Number(x)); // convert into numbers
 
 for (let entry of inputs) {
-  if (typeof entry === "number" && entry >= 0) {
+  if (typeof entry === "number" && entry >= 0) { // skip any NaN or negatives
     setTimeout(() => {
       console.log(entry); // adding a write console here as my system sound takes longer than 1 second to play, so consecutive integers will not play the second sound
       process.stdout.write('\x07');
-    }, (entry * 1000));
+    }, (entry * 1000)); // it's in milliseconds
   }
 }
